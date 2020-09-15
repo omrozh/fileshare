@@ -1,8 +1,25 @@
 <body>
     <center>
+        <style>
+        .loader {
+                border: 5px solid #f3f3f3; /* Light grey */
+                border-top: 5px solid #3498db; /* Blue */
+                border-radius: 50%;
+                width: 30px;
+                height: 30px;
+                animation: spin 2s linear infinite;
+                }
+
+                @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); 
+                }
+            }
+    </style>
         <br>
         Upload a file
         <input class="form-control"  style="width: 30%;" type="file" id="file">
+        <div id="loadercircle"></div>
 
         <br>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -38,6 +55,7 @@
     fileuploader = document.getElementById("file")
 
     fileuploader.addEventListener("change", function(e){
+        document.getElementById("loadercircle").className = "loader"
         var filecode = parseInt(Math.random() * 10000000);
         var upload = e.target.files[0];
         var storageref = firebase.storage().ref("files/" + filecode);
