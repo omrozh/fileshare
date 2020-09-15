@@ -30,6 +30,8 @@
         <input type="text" class="form-control" style="width: 30%;" id="fileid">
         <br>
         <input type="button" class="btn btn-primary" style="width: 15%" onclick="downloadfile()" value="View File">
+        <br>
+        <div id="latestcode"></div>
 
     </center>
 
@@ -61,6 +63,7 @@
         var storageref = firebase.storage().ref("files/" + filecode);
         storageref.put(upload).then(function(){
             document.getElementById("loadercircle").className = "noloading"
+            document.getElementById("latestcode").innerHTML = "Latest file id: " + filecode;
             alert("Upload complete, your file code is: " + filecode);
         })
     })
