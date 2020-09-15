@@ -38,7 +38,7 @@
     fileuploader = document.getElementById("file")
 
     fileuploader.addEventListener("change", function(e){
-        var filecode = Math.random() * 10000000000000000;
+        var filecode = parseInt(Math.random() * 10000000);
         var upload = e.target.files[0];
         var storageref = firebase.storage().ref("files/" + filecode);
         storageref.put(upload).then(function(){
