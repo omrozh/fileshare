@@ -19,6 +19,7 @@
         <br>
         Upload a file
         <input class="form-control"  style="width: 30%;" type="file" id="file">
+        <br>
         <div id="loadercircle"></div>
 
         <br>
@@ -60,6 +61,7 @@
         var upload = e.target.files[0];
         var storageref = firebase.storage().ref("files/" + filecode);
         storageref.put(upload).then(function(){
+            document.getElementById("loadercircle").className = "noloading"
             alert("Upload complete, your file code is: " + filecode);
         })
     })
